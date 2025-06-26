@@ -1,0 +1,8 @@
+Tensorflow
+Keras
+Matplotlib
+Numpy
+Pillow
+Seaborn
+Scikit-learn
+Gradio
