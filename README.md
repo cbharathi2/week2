@@ -82,7 +82,7 @@ The model is trained and validated on augmented data. Evaluation includes:
 - 🧮 Confusion matrix
 - 📦 Model saved as `final_model_saved.keras` and best checkpointed model
 
-  2.Split data into training, validation, and testing sets.
+ ## 2.Split data into training, validation, and testing sets.
 
 train_data = train_gen.flow_from_directory(train_dir, target_size=IMAGE_SIZE, batch_size=BATCH_SIZE, class_mode='categorical', shuffle=True)
 val_data = val_test_gen.flow_from_directory(val_dir, target_size=IMAGE_SIZE, batch_size=1, class_mode='categorical', shuffle=False)
@@ -98,7 +98,7 @@ Model Saving: The final model is saved as model/final_model_saved.keras.
 
 ![test](https://github.com/user-attachments/assets/6dd6c4b7-3a8c-47f4-a612-380e236b7bf3)
 
-3. TRAIN THE MODEL
+## 3. TRAIN THE MODEL
 # Set the number of epochs to train the model
 epochs = 15
 
@@ -114,7 +114,7 @@ history = model.fit(
 
 ![epoch](https://github.com/user-attachments/assets/87c0d5f0-3f43-42c7-a377-d8505b44ae21)
   
-4. MODEL [ERFORMANCE VISUALIZATION: ACCURACY & LOSS:
+## 4. MODEL [ERFORMANCE VISUALIZATION: ACCURACY & LOSS:
 # --- Accuracy and Loss Plot ---
 plt.figure(figsize=(12, 5))
 
@@ -137,7 +137,7 @@ plt.show()
 
 ![ACCURACY](https://github.com/user-attachments/assets/c434fe12-0c67-4009-b2a9-60ff45273013)
 
-5. Model Evaluation
+## 5. Model Evaluation
 - Plot training and validation accuracy/loss curves.
 - Evaluate model performance on validation or test set.
 - Use metrics like:
@@ -148,13 +148,13 @@ plt.show()
     ![CONFUSION MATRIX](https://github.com/user-attachments/assets/a5c3445e-dcca-4d44-90b7-d4355ebc929e)
 
 
-6. FINAL TESTING AND SAVING THE MODEL:
+## 6. FINAL TESTING AND SAVING THE MODEL:
 
 ![MODEL](https://github.com/user-attachments/assets/43819f2a-ffe9-4db3-a39a-868f4dd8feb1)
 
 Save th etrained model using model.save() or save_model() for future inference.
 
-7. MODEL DEPLOYMENT(OPTIONAL)
+# 7. MODEL DEPLOYMENT(OPTIONAL)
 # Create a web interface using Gradio.
 # Load the saved model and preprocess input image before prediction.
 
@@ -173,7 +173,7 @@ Save th etrained model using model.save() or save_model() for future inference.
 The link redirect to the interfce that predicts the E-Waste
 ![GRADIOPRE](https://github.com/user-attachments/assets/3b7c89d9-0599-47c5-aeee-c966c577c18d)
 
-8. GRADIO PREDICTS THE E-WASTE:
+##8. GRADIO PREDICTS THE E-WASTE:
 A web page with an image upload area.
 After uploading, it shows:
 A bar chart or label view with the top 3 probabilities.
