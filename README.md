@@ -71,6 +71,122 @@ Core Libraries:
 - Check the number of images per class to ensure balance.
 - Understand image dimensions, color channels, and class labels.
 
+  
+E- WASTE IMAGE CLASSIFICARTION WORK FLOW
+![ChatGPT Image Jun 27, 2025, 02_27_04 PM](https://github.com/user-attachments/assets/f2420671-36ba-4f72-b68d-fcde88402d02)
+
+The model is trained and validated on augmented data. Evaluation includes:
+
+- 📈 Accuracy & loss plots
+- 🔍 Classification report
+- 🧮 Confusion matrix
+- 📦 Model saved as `final_model_saved.keras` and best checkpointed model
+
   ### Split data into training, validation, and testing sets.
+
+train_data = train_gen.flow_from_directory(train_dir, target_size=IMAGE_SIZE, batch_size=BATCH_SIZE, class_mode='categorical', shuffle=True)
+val_data = val_test_gen.flow_from_directory(val_dir, target_size=IMAGE_SIZE, batch_size=1, class_mode='categorical', shuffle=False)
+test_data = val_test_gen.flow_from_directory(test_dir, target_size=IMAGE_SIZE, batch_size=1, class_mode='categorical', shuffle=False)
+
+Training: The script trains the model for up to 15 epochs with early stopping (patience=3) and saves the best model to model/best_model.keras.
+Evaluation: After training, it generates a classification report, confusion matrix, and plots for accuracy/loss and class distribution.
+Model Saving: The final model is saved as model/final_model_saved.keras.
+![train](https://github.com/user-attachments/assets/64b39383-9af3-4908-b6b2-e162a453470c)
+
+![valid](https://github.com/user-attachments/assets/fee9afa0-b499-4bb6-88e3-57e49b1f162c)
+
+
+![test](https://github.com/user-attachments/assets/6dd6c4b7-3a8c-47f4-a612-380e236b7bf3)
+
+TRAIN THE MODEL
+# Set the number of epochs to train the model
+epochs = 15
+
+# Train the model on the training dataset 'datatrain'
+history = model.fit(
+    datatrain,                      
+    validation_data=datavalid,     
+    epochs=epochs,                  
+    batch_size=100,                
+    callbacks=[early]               
+)
+
+
+![epoch](https://github.com/user-attachments/assets/87c0d5f0-3f43-42c7-a377-d8505b44ae21)
+  
+MODEL [ERFORMANCE VISUALIZATION: ACCURACY & LOSS:
+# --- Accuracy and Loss Plot ---
+plt.figure(figsize=(12, 5))
+
+# Plotting Accuracy
+plt.subplot(1, 2, 1)
+plt.plot(history.history['accuracy'], label='Train Acc')
+plt.plot(history.history['val_accuracy'], label='Val Acc')
+plt.title('Accuracy')
+plt.legend()
+
+# Plotting Loss
+plt.subplot(1, 2, 2)
+plt.plot(history.history['loss'], label='Train Loss')
+plt.plot(history.history['val_loss'], label='Val Loss')
+plt.title('Loss')
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
+![ACCURACY](https://github.com/user-attachments/assets/c434fe12-0c67-4009-b2a9-60ff45273013)
+
+##   Model Evaluation
+- Plot training and validation accuracy/loss curves.
+- Evaluate model performance on validation or test set.
+- Use metrics like:
+  - **Confusion Matrix**
+  - **Classification Report** (Precision, Recall, F1-score)
+  - `confusion_matrix`, `classification_report`: To evaluate the model's classification performance.
+ 
+    ![CONFUSION MATRIX](https://github.com/user-attachments/assets/a5c3445e-dcca-4d44-90b7-d4355ebc929e)
+
+
+FINAL TESTING AND SAVING THE MODEL:
+
+![MODEL](https://github.com/user-attachments/assets/43819f2a-ffe9-4db3-a39a-868f4dd8feb1)
+
+Save th etrained model using model.save() or save_model() for future inference.
+
+MODEL DEPLOYMENT(OPTIONAL)
+# Create a web interface using Gradio.
+# Load the saved model and preprocess input image before prediction.
+
+!pip install gradio
+
+🌐 Gradio Interface and Preprocessing
+- `gr`: To build a web interface for the model.
+- `PIL.Image`: For handling image input in Gradio.
+- `preprocess_input`: Preprocessing method for EfficientNet.
+- `load_model`: For loading a saved model for inference.
+
+*Running on local URL: http://127.0.0.1:7860
+
+![LINK](https://github.com/user-attachments/assets/d0157873-aa51-4fdb-a323-810db4b4d45a)
+
+The link redirect to the interfce that predicts the E-Waste
+![GRADIOPRE](https://github.com/user-attachments/assets/3b7c89d9-0599-47c5-aeee-c966c577c18d)
+
+GRADIO PREDICTS THE E-WASTE:
+A web page with an image upload area.
+After uploading, it shows:
+A bar chart or label view with the top 3 probabilities.
+A text output with the final predicted class name.
+
+![GRADIOAFTR](https://github.com/user-attachments/assets/7ef6795e-4261-4c24-8bc2-7d02c22f04cb)
+
+
+
+
+
+
+
+
 
 
