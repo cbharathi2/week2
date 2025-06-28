@@ -1,10 +1,10 @@
-E-Waste Image Classifier
+## E-Waste Image Classifier
 
-Overview
+## Overview
 
 This project implements an image classification system for categorizing e-waste images into one of 10 predefined categories using a fine-tuned EfficientNetV2B0 model. The system is built with TensorFlow/Keras for model training and evaluation, and Gradio for an interactive user interface. The dataset is assumed to be organized in directories for training, validation, and testing.
 
-Features:
+## Features:
 
 #Data Preprocessing: Uses ImageDataGenerator for data augmentation (rotation, zoom, flipping) and normalization.
 #Model Architecture: Fine-tuned EfficientNetV2B0 with a custom classification head (GlobalAveragePooling2D, Dropout, Dense).
@@ -12,7 +12,7 @@ Features:
 #Evaluation: Generates classification reports, confusion matrices, and plots for accuracy/loss and class distribution.
 #Inference: Provides a Gradio-based web interface for real-time image classification.
 
-Requirements
+## Requirements
 
 To run this project, install the required dependencies:
 "pip install tensorflow numpy matplotlib seaborn gradio"
@@ -35,7 +35,7 @@ dataset/
 │   ├── class2/
 │   └── ...
 
-✅ Uses of EfficientNetV2B0 as a Transfer Learning Backbone
+## Uses of EfficientNetV2B0 as a Transfer Learning Backbone
 EfficientNetV2B0 is a highly optimized convolutional neural network architecture developed by Google, and it serves as a powerful backbone for transfer learning tasks, particularly in image classification
 
 Core Libraries:
